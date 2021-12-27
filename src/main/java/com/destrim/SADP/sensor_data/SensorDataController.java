@@ -23,6 +23,9 @@ public class SensorDataController {
         return sensorDataService.getSensorData();
     }
 
+    @GetMapping(path = "sensors")
+    public List<String> getSensorNames() { return  sensorDataService.getSensorNames(); }
+
     @PostMapping
     public void addSensorData(@RequestBody SensorData sensorData) {
         sensorDataService.addSensorData(sensorData);
