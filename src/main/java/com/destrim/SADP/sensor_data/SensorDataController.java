@@ -1,14 +1,12 @@
 package com.destrim.SADP.sensor_data;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/sensor")
 public class SensorDataController {
 
     private final SensorDataService sensorDataService;
@@ -23,8 +21,15 @@ public class SensorDataController {
         return sensorDataService.getSensorData();
     }
 
-    @GetMapping(path = "sensors")
-    public List<String> getSensorNames() { return  sensorDataService.getSensorNames(); }
+    @GetMapping(path = "all")
+    public List<String> getSensorNames() {
+        return sensorDataService.getSensorNames();
+    }
+
+    @GetMapping(path = "{name}")
+    public List<SensorData> getSpecificSensorData(@PathVariable String name) {
+        return sensorDataService.getSpecificSensorData(name);
+    }
 
     @PostMapping
     public void addSensorData(@RequestBody SensorData sensorData) {

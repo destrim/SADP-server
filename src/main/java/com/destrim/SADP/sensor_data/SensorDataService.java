@@ -3,9 +3,8 @@ package com.destrim.SADP.sensor_data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SensorDataService {
@@ -30,11 +29,21 @@ public class SensorDataService {
 
 
     public List<String> getSensorNames() {
-        Optional<List<String>> names = sensorDataRepository.getSensorNames();
-        if (names.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return names.get();
-        }
+//        Optional<List<String>> names = sensorDataRepository.getSensorNames();
+//        if (names.isEmpty()) {
+//            return new ArrayList<>();
+//        } else {
+//            return names.get();
+//        }
+        return sensorDataRepository
+                .getDistinctBy()
+                .stream()
+                .map(SensorDataRepository.NamesOnly::getName)
+                .collect(Collectors.toList());
+    }
+
+
+    public List<SensorData> getSpecificSensorData(String sensorName) {
+        return sensorDataRepository.getByName(sensorName);
     }
 }
