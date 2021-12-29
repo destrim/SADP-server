@@ -1,8 +1,10 @@
 package com.destrim.SADP.sensor_data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,13 +27,14 @@ public class SensorData {
     )
     private Long id;
     private String name;
-    private String timestamp;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime timestamp;
     private Double temp;
     private Double hum;
 
     public SensorData(String name, String timestamp, Double temp, Double hum) {
         this.name = name;
-        this.timestamp = timestamp;
+        this.timestamp = LocalDateTime.parse(timestamp);
         this.temp = temp;
         this.hum = hum;
     }
