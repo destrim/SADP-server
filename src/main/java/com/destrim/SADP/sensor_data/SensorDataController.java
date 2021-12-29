@@ -31,7 +31,7 @@ public class SensorDataController {
         return sensorDataService.getSpecificSensorData(name);
     }
 
-    @PostMapping
+    @PostMapping(path="data")
     public void addSensorData(@RequestBody SensorData sensorData) {
         sensorDataService.addSensorData(sensorData);
     }
