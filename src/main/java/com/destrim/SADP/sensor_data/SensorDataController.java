@@ -3,6 +3,8 @@ package com.destrim.SADP.sensor_data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,6 +31,11 @@ public class SensorDataController {
     @GetMapping(path = "{name}")
     public List<SensorData> getSpecificSensorData(@PathVariable String name) {
         return sensorDataService.getSpecificSensorData(name);
+    }
+
+    @GetMapping(path = "daterange/{name}")
+    public List<LocalDateTime> getSpecificSensorDateRange(@PathVariable String name) {
+        return sensorDataService.getSpecificSensorDateRange(name);
     }
 
     @PostMapping(path="data")
