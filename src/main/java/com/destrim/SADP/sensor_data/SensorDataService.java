@@ -52,15 +52,11 @@ public class SensorDataService {
             String name,
             LocalDate minDate,
             LocalDate maxDate
-//            LocalDateTime minDate,
-//            LocalDateTime maxDate
     ) {
         return sensorDataRepository.getByNameAndTimestampBetween(
                 name,
                 minDate.atStartOfDay(),
                 maxDate.atTime(23, 59, 59)
-//                minDate,
-//                maxDate
         );
     }
 

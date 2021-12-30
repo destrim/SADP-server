@@ -39,13 +39,11 @@ public class SensorDataController {
         return sensorDataService.getSensorDateRangeByName(name);
     }
 
-    @GetMapping(path = "{name}/{minDate}/{maxDate}")
+    @GetMapping(path = "{name}/datainrange")
     public List<SensorData> getSensorDataByNameAndBetweenRange(
             @PathVariable String name,
-            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate minDate,
-            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate maxDate
-//            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime minDate,
-//            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime maxDate
+            @RequestParam(value = "min") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate minDate,
+            @RequestParam(value = "max") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate maxDate
     ) {
         return sensorDataService.getSensorDataByNameAndBetweenRange(
                 name,

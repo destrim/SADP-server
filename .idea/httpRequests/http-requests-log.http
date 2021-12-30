@@ -1,3 +1,159 @@
+GET http://localhost:8080/sensor/test_01/datainrange?min=2021-11-01&max=2021-12-30
+
+<> 2021-12-30T200046.200.json
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-11-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+GET http://localhost:8080/sensor/test_01/datainrange?min=2021-11-01&max=2021-12-30
+
+<> 2021-12-30T200038.200.json
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-12-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+  {
+    "name": "test_01",
+    "timestamp": "2021-12-21 20:35:30",
+    "temp": 24.1,
+    "hum": 44.0
+  }
+
+###
+
+GET http://localhost:8080/sensor/test_01/datainrange/?min=2021-11-01?max=2021-12-30
+
+<> 2021-12-30T195705.400.json
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-12-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+  {
+    "name": "test_01",
+    "timestamp": "2021-12-21 20:35:30",
+    "temp": 24.1,
+    "hum": 44.0
+  }
+
+###
+
+GET http://localhost:8080/sensor/datainrange/test_01?min=2021-11-01?max=2021-12-30
+
+<> 2021-12-30T195315.400.json
+
+###
+
+GET http://localhost:8080/sensor/datainrange/test_01?minDate=2021-11-01?maxDate=2021-12-30
+
+<> 2021-12-30T195303.400.json
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-12-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+  {
+    "name": "test_01",
+    "timestamp": "2021-12-21 20:35:30",
+    "temp": 24.1,
+    "hum": 44.0
+  }
+
+###
+
+GET http://localhost:8080/sensor/test_01/?minDate=2021-11-01?maxDate=2021-12-30
+
+<> 2021-12-30T194953.200.json
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-11-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+{
+  "name": "test_01",
+  "timestamp": "2021-12-22 20:35:30",
+  "temp": 24.1,
+  "hum": 44.0
+}
+
+###
+
+POST http://localhost:8080/sensor/data
+Content-Type: application/json
+
+  {
+    "name": "test_01",
+    "timestamp": "2021-12-21 20:35:30",
+    "temp": 24.1,
+    "hum": 44.0
+  }
+
+###
+
 GET http://localhost:8080/sensor/test_01/2021-11-01/2021-12-30
 
 <> 2021-12-30T191840.200.json
@@ -313,198 +469,6 @@ Content-Type: application/json
 GET http://localhost:8080/sensor/mindate/test_01
 
 <> 2021-12-29T233543.200.json
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-{
-  "name": "test_02",
-  "timestamp": "2021-12-21 20:35:35",
-  "temp": 24.1,
-  "hum": 44.0
-}
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_05",
-    "timestamp": "2021-12-21 20:35:50",
-    "temp": 23.8,
-    "hum": 43.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_04",
-    "timestamp": "2021-12-21 20:35:45",
-    "temp": 24.0,
-    "hum": 43.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-{
-  "name": "test_03",
-  "timestamp": "2021-12-21 20:35:40",
-  "temp": 24.0,
-  "hum": 43.0
-}
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-{
-  "name": "test_02",
-  "timestamp": "2021-12-21 20:35:35",
-  "temp": 24.1,
-  "hum": 44.0
-}
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
-
-###
-
-POST http://localhost:8080/sensor/data
-Content-Type: application/json
-
-  {
-    "name": "test_01",
-    "timestamp": "2021-12-21 20:35:30",
-    "temp": 24.1,
-    "hum": 44.0
-  }
 
 ###
 
