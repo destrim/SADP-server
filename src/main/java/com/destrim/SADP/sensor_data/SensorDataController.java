@@ -1,10 +1,11 @@
 package com.destrim.SADP.sensor_data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,13 +30,28 @@ public class SensorDataController {
     }
 
     @GetMapping(path = "{name}")
-    public List<SensorData> getSpecificSensorData(@PathVariable String name) {
-        return sensorDataService.getSpecificSensorData(name);
+    public List<SensorData> getSensorDataByName(@PathVariable String name) {
+        return sensorDataService.getSensorDataByName(name);
     }
 
     @GetMapping(path = "daterange/{name}")
-    public List<LocalDateTime> getSpecificSensorDateRange(@PathVariable String name) {
-        return sensorDataService.getSpecificSensorDateRange(name);
+    public List<LocalDateTime> getSensorDateRangeByName(@PathVariable String name) {
+        return sensorDataService.getSensorDateRangeByName(name);
+    }
+
+    @GetMapping(path = "{name}/{minDate}/{maxDate}")
+    public List<SensorData> getSensorDataByNameAndBetweenRange(
+            @PathVariable String name,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate minDate,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate maxDate
+//            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime minDate,
+//            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime maxDate
+    ) {
+        return sensorDataService.getSensorDataByNameAndBetweenRange(
+                name,
+                minDate,
+                maxDate
+        );
     }
 
     @PostMapping(path="data")

@@ -3,10 +3,10 @@ package com.destrim.SADP.sensor_data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,16 +35,33 @@ public class SensorDataService {
     }
 
 
-    public List<SensorData> getSpecificSensorData(String sensorName) {
+    public List<SensorData> getSensorDataByName(String sensorName) {
         return sensorDataRepository.getByName(sensorName);
     }
 
 
-    public List<LocalDateTime> getSpecificSensorDateRange(String name) {
+    public List<LocalDateTime> getSensorDateRangeByName(String name) {
         List<LocalDateTime> dateRangeList = new ArrayList<>();
         dateRangeList.add(sensorDataRepository.getSpecificSensorMinDate(name).orElseThrow());
         dateRangeList.add(sensorDataRepository.getSpecificSensorMaxDate(name).orElseThrow());
         return dateRangeList;
+    }
+
+
+    public List<SensorData> getSensorDataByNameAndBetweenRange(
+            String name,
+            LocalDate minDate,
+            LocalDate maxDate
+//            LocalDateTime minDate,
+//            LocalDateTime maxDate
+    ) {
+        return sensorDataRepository.getByNameAndTimestampBetween(
+                name,
+                minDate.atStartOfDay(),
+                maxDate.atTime(23, 59, 59)
+//                minDate,
+//                maxDate
+        );
     }
 
 

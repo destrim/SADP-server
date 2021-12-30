@@ -22,6 +22,12 @@ public interface SensorDataRepository extends JpaRepository<SensorData, Long> {
     @Query("SELECT min(s.timestamp) from SensorData s where s.name = :name")
     Optional<LocalDateTime> getSpecificSensorMinDate(@Param("name") String sensorName);
 
+    List<SensorData> getByNameAndTimestampBetween(
+            String name,
+            LocalDateTime minDate,
+            LocalDateTime maxDate
+    );
+
 
     interface NamesOnly {
         String getName();
