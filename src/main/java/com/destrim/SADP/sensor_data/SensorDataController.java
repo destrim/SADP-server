@@ -40,16 +40,21 @@ public class SensorDataController {
     }
 
     @GetMapping(path = "{name}/datainrange")
-    public List<SensorData> getSensorDataByNameAndBetweenRange(
+    public List<SensorData> getSensorDataByNameAndBetweenRangeOrderByTimestamp(
             @PathVariable String name,
             @RequestParam(value = "min") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate minDate,
             @RequestParam(value = "max") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate maxDate
     ) {
-        return sensorDataService.getSensorDataByNameAndBetweenRange(
+        return sensorDataService.getSensorDataByNameAndBetweenRangeOrderByTimestamp(
                 name,
                 minDate,
                 maxDate
         );
+    }
+
+    @GetMapping(path = "{name}/latest")
+    public SensorData getLatestSensorDataByName(@PathVariable String name) {
+        return sensorDataService.getLatestSensorDataByName(name);
     }
 
     @PostMapping(path="data")

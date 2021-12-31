@@ -17,17 +17,18 @@ public interface SensorDataRepository extends JpaRepository<SensorData, Long> {
     List<SensorData> getByName(String name);
 
     @Query("SELECT max(s.timestamp) from SensorData s where s.name = :name")
-    Optional<LocalDateTime> getSpecificSensorMaxDate(@Param("name") String sensorName);
+    Optional<LocalDateTime> getSpecificSensorMaxDate(@Param("name") String name);
 
     @Query("SELECT min(s.timestamp) from SensorData s where s.name = :name")
-    Optional<LocalDateTime> getSpecificSensorMinDate(@Param("name") String sensorName);
+    Optional<LocalDateTime> getSpecificSensorMinDate(@Param("name") String name);
 
-    List<SensorData> getByNameAndTimestampBetween(
+    List<SensorData> getByNameAndTimestampBetweenOrderByTimestamp(
             String name,
             LocalDateTime minDate,
             LocalDateTime maxDate
     );
 
+    SensorData findTopByNameOrderByIdDesc(String name);
 
     interface NamesOnly {
         String getName();

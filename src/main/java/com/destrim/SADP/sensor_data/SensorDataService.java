@@ -35,8 +35,8 @@ public class SensorDataService {
     }
 
 
-    public List<SensorData> getSensorDataByName(String sensorName) {
-        return sensorDataRepository.getByName(sensorName);
+    public List<SensorData> getSensorDataByName(String name) {
+        return sensorDataRepository.getByName(name);
     }
 
 
@@ -48,16 +48,21 @@ public class SensorDataService {
     }
 
 
-    public List<SensorData> getSensorDataByNameAndBetweenRange(
+    public List<SensorData> getSensorDataByNameAndBetweenRangeOrderByTimestamp(
             String name,
             LocalDate minDate,
             LocalDate maxDate
     ) {
-        return sensorDataRepository.getByNameAndTimestampBetween(
+        return sensorDataRepository.getByNameAndTimestampBetweenOrderByTimestamp(
                 name,
                 minDate.atStartOfDay(),
                 maxDate.atTime(23, 59, 59)
         );
+    }
+
+
+    public SensorData getLatestSensorDataByName(String name) {
+        return sensorDataRepository.findTopByNameOrderByIdDesc(name);
     }
 
 
