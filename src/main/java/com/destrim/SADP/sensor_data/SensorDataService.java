@@ -28,7 +28,7 @@ public class SensorDataService {
 
     public List<String> getSensorNames() {
         return sensorDataRepository
-                .getDistinctBy()
+                .getDistinctByOrderByName()
                 .stream()
                 .map(SensorDataRepository.NamesOnly::getName)
                 .collect(Collectors.toList());

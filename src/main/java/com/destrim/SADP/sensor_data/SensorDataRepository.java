@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface SensorDataRepository extends JpaRepository<SensorData, Long> {
 
-    List<NamesOnly> getDistinctBy();
+    List<NamesOnly> getDistinctByOrderByName();
 
     List<SensorData> getByName(String name);
 
